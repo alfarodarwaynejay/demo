@@ -1,8 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import App from './containers/App'
+import { HashRouter as Router } from 'react-router-dom'
 
-const Index = () => {
-  return <div>Hello React DEMO!</div>
-}
-
-ReactDOM.render(<Index />, document.getElementById("index"))
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById("index")
+)

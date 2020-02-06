@@ -7,6 +7,7 @@ import { NavigationDrawer } from 'react-md'
 import NavigationLink from '../components/NavigationLink'
 import About from '../components/About'
 import Customers from './Customers'
+import CustomerDetails from './CustomerDetails'
 import capitalize from 'lodash/capitalize'
 
 const navItems = [
@@ -18,7 +19,8 @@ const navItems = [
   },
   {
     label: 'Customers',
-    to: `/customers/:id?`,
+    to: '/customers/:id?',
+    exact: false,
     icon: 'face',
   }
 ]
@@ -64,8 +66,9 @@ class App extends PureComponent {
         defaultVisible
       >
         <Switch key={location.pathname}>
-          <Route path={navItems[0].to} exact component={About} />
+          <Route path={navItems[0].to} component={About} />
           <Route path={navItems[1].to} component={Customers} />
+          <Route path={`/customers/:id?`} component={CustomerDetails} />
 
           {/* default route */}
           <Route path={'/'} exact component={About} />

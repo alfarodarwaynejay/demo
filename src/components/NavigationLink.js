@@ -7,18 +7,19 @@ const NavItemLink = ({ label, to, icon, exact }) => (
   <Route path={to} exact={exact}>
     {({ match, location }) => {
       let leftIcon
-      const isRoot = location.pathname === '/' && to === '/about'
+      const isAbout = to === '/about'
+      const isRoot = location.pathname === '/' && isAbout
       if (icon) {
         leftIcon = <FontIcon>{icon}</FontIcon>
       }
 
       return (
         <ListItem
-          component={Link}
-          active={!!match || isRoot}
           to={to}
+          component={Link}
           primaryText={label}
           leftIcon={leftIcon}
+          active={!!match || isRoot}
         />
       );
     }}

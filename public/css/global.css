@@ -51,6 +51,12 @@
   margin-bottom: 3rem;
 }
 
+#about-info-h4 {
+  margin-top: 3rem;
+  justify-content: left;
+  color: 'red'
+}
+
 .about_sub__header .md-list-tile {
   cursor: auto;
 }

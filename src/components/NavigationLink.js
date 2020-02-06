@@ -5,16 +5,17 @@ import { FontIcon, ListItem } from 'react-md';
 
 const NavItemLink = ({ label, to, icon, exact }) => (
   <Route path={to} exact={exact}>
-    {({ match }) => {
-      let leftIcon;
+    {({ match, location }) => {
+      let leftIcon
+      const isRoot = location.pathname === '/' && to === '/about'
       if (icon) {
-        leftIcon = <FontIcon>{icon}</FontIcon>;
+        leftIcon = <FontIcon>{icon}</FontIcon>
       }
 
       return (
         <ListItem
           component={Link}
-          active={!!match}
+          active={!!match || isRoot}
           to={to}
           primaryText={label}
           leftIcon={leftIcon}

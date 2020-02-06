@@ -7,17 +7,21 @@ import { NavigationDrawer } from 'react-md'
 import NavigationLink from '../components/NavigationLink'
 import About from '../components/About'
 import Customers from './Customers'
+import capitalize from 'lodash/capitalize'
 
-const navItems = [{
-  label: 'about',
-  to: '/about',
-  exact: true,
-  icon: 'info_outline',
-}, {
-  label: 'Customers',
-  to: `/customers`,
-  icon: 'face',
-}]
+const navItems = [
+  {
+    label: 'About',
+    to: '/about',
+    exact: true,
+    icon: 'info_outline',
+  },
+  {
+    label: 'Customers',
+    to: `/customers/:id?`,
+    icon: 'face',
+  }
+]
 
 class App extends PureComponent {
   static propTypes = {
@@ -41,8 +45,8 @@ class App extends PureComponent {
   getCurrentTitle = () => {
     const { location: { pathname } } = this.props
     const lastSection = pathname.substring(pathname.lastIndexOf('/') + 1)
-    return lastSection
-  };
+    return capitalize(lastSection || 'about')
+  }
 
   render() {
     const { toolbarTitle } = this.state
@@ -57,13 +61,17 @@ class App extends PureComponent {
         contentId="main-demo-content"
         contentStyle={{ minHeight: 'auto' }}
         contentClassName="md-grid"
+        defaultVisible
       >
         <Switch key={location.pathname}>
           <Route path={navItems[0].to} exact component={About} />
           <Route path={navItems[1].to} component={Customers} />
+
+          {/* default route */}
+          <Route path={'/'} exact component={About} />
         </Switch>
       </NavigationDrawer>
     )
   }
 }
-export default withRouter(App);
+export default withRouter(App)

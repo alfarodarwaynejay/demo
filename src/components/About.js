@@ -1,16 +1,45 @@
 import React from 'react'
-import { Paper } from 'react-md'
+import {
+  List,
+  Paper,
+  FontIcon,
+  ListItem,
+} from 'react-md'
 
 const About = () => (
-  // <span>About</span>
   <div className='md-grid' style={{justifyContent: 'center'}}>
-    <div className='md-cell--4'>
+    <div className='md-cell--8'>
       <Paper
         key='paper'
         zDepth={3}
-        className="papers__example"
+        className="papers__example md-grid"
       >
-        <span>About</span>
+        <h1 className='demo__header'>Demo App</h1>
+        <h3 id='about-info'>
+        This is a Demo App for the take home assignment.
+        </h3>
+
+        <div className='md-cell--12 about_sub__header'>
+          <h3>With the following technical requirements:</h3>
+        <List className="md-cell--center">
+          <ListItem
+            leftIcon={<FontIcon>star</FontIcon>}
+            primaryText='React'
+          />
+          <ListItem
+            leftIcon={<FontIcon>star</FontIcon>}
+            primaryText='React-Router'
+          />
+          <ListItem
+            leftIcon={<FontIcon>star</FontIcon>}
+            primaryText='Redux & Redux-Saga'
+          />
+          <ListItem
+            leftIcon={<FontIcon>star</FontIcon>}
+            primaryText='Webpack'
+          />
+        </List>
+        </div>
       </Paper>
     </div>
   </div>

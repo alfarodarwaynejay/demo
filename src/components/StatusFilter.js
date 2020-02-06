@@ -11,7 +11,7 @@ const StatusFilter = ({ status, onExpandChange, onSelectionChange, controls}) =>
       footer={null}
       label='Filter by Status'
       className='md-cell md-cell--4'
-      onExpandToggle={onExpandChange}
+      onExpandToggle={(expanded) => onExpandChange(expanded, 'status')}
     >
       <SelectionControlGroup
         type='radio'
@@ -19,7 +19,7 @@ const StatusFilter = ({ status, onExpandChange, onSelectionChange, controls}) =>
         id='status-filter'
         name="status-filter"
         controls={controls}
-        onChange={onSelectionChange}
+        onChange={(value, e) => onSelectionChange(value, e, 'status')}
       />
     </ExpansionPanel>
   </ExpansionList>

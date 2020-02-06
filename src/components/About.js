@@ -14,13 +14,13 @@ const About = () => (
         zDepth={3}
         className="papers__example md-grid"
       >
-        <h1 className='demo__header'>Demo App</h1>
+        <h1 className='demo__header'>Customer Database</h1>
         <h3 id='about-info'>
-        This is a Demo App for the take-home assignment.
+        A demo app for the take-home assignment.
         </h3>
 
         <div className='md-cell--12 about_sub__header'>
-          <h3>With the following technical requirements:</h3>
+          <h3>Technical requirements:</h3>
           <List className="md-cell--center">
           `<ListItem
               leftIcon={<FontIcon>star</FontIcon>}

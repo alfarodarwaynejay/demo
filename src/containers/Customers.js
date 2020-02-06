@@ -1,28 +1,30 @@
 import React, { PureComponent } from 'react'
-import {
-  Paper
-} from 'react-md'
+import { Paper } from 'react-md'
+import { connect } from 'react-redux'
 import CustomerHeader from '../components/CustomerHeader'
-import CustomerList from '../components/CustomerList';
+import CustomerList from '../components/CustomerList'
 
-const checkboxControls = [
-  {
-    label: 'Active',
-    value: 'ACTIVE'
-  },
-  {
-    label: 'Regisering',
-    value: 'REGISTERING',
-  }
-]
+import {
+  GetGridList,
+  GetItemDetails
+} from '../redux/actions'
+
+import {
+  orderControls,
+  statusControls,
+  columnControls
+} from '../defaults/selectionDefaults'
 
 class Customers extends PureComponent {
   constructor(props) {
     super(props)
     this.state = {
       search: '',
-      status: '',
-      order: 'asc'
+      filter: {
+        status: '',
+        column: '',
+        order: 'asc'
+      }
     }
   }
 
@@ -36,27 +38,62 @@ class Customers extends PureComponent {
   handleInputChange = (search, e) => {
     e.preventDefault()
     e.stopPropagation()
-    this.setState({ search })
+    const { dispatch } = this.props
+    const state = { ...this.state, search}
+
+    this.setState(state, () => dispatch(GetGridList(state)))
   }
 
-  handleExpansionExpand = (expanded) => {
+  handleExpansionExpand = (expanded, id) => {
+    const { dispatch } = this.props
+    const { filter, ...restState } = this.state
+
     if (!expanded) {
-      this.setState({ status: '' })
+      const state = {
+        ...restState,
+        filter: {
+          ...filter,
+          [id]: ''
+        }
+      }
+      this.setState(state, () => dispatch(GetGridList(state)))
     }
   }
 
-  handleSelectionControl = (status, e) => {
+  handleSelectionChange = (value, e, id) => {
     e.preventDefault()
     e.stopPropagation()
-    this.setState({ status })
+
+    const { dispatch } = this.props
+    const { filter, ...restState } = this.state
+    const state = {
+      ...restState,
+      filter: {
+        ...filter,
+        [id]: value
+      }
+    }
+    this.setState(state, () => dispatch(GetGridList(state)))
   }
 
   handleRowClick = (id)  => {
+    const { history, location } = this.props
     console.log('id: ', id)
+    history.push(`${location.pathname}/${id}`)
   }
 
   render() {
-    const { search, status } = this.state
+    const { store } = this.props
+    const {
+      search,
+      filter: {
+        status,
+        order,
+        column
+      }
+    } = this.state
+    // this.props
+    console.log('this.props: ', this.props);
 
     return (
       <div className='md-grid' style={{ justifyContent: 'center'}}>
@@ -68,14 +105,19 @@ class Customers extends PureComponent {
         >
           <h1 className='demo__header'>Customers List</h1>
           <CustomerHeader
+            order={order}
             status={status}
             search={search}
-            controls={checkboxControls}
+            column={column}
+            orderControls={orderControls}
+            columnControls={columnControls}
+            statusControls={statusControls}
             onChange={this.handleInputChange}
             onExpandChange={this.handleExpansionExpand}
-            onSelectionChange={this.handleSelectionControl}
+            onSelectionChange={this.handleSelectionChange}
           />
           <CustomerList
+            store={store}
             onRowClick={this.handleRowClick}
           />
         </Paper>
@@ -85,4 +127,7 @@ class Customers extends PureComponent {
   }
 }
 
-export default Customers
+export default connect(
+  ({ setInitialReducers }) => ({ store: { ...setInitialReducers } }),
+  null
+)(Customers)

@@ -132,10 +132,10 @@ const CustomerList = (props) => {
   } = props
   const tableHeader = () => {
     const tableColumns = [
-      'firstName',
-      'lastName',
-      'email',
-      'status'
+      'First tName',
+      'Last Name',
+      'Email',
+      'Status'
     ]
     return (
       <TableHeader>

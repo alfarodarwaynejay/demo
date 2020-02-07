@@ -42,9 +42,33 @@
   padding: 2rem;
   justify-content: center;
 }
+
 .demo__header {
   text-align: center;
   width: 100%;
+}
+
+.details_img {
+  margin-bottom: 3rem;
+  border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: -3px 3px 7px 1px #ccc;
+}
+
+.details_divider {
+  margin: 1rem
+}
+
+#details_paper {
+  padding: 3rem;
+  justify-content: center;
+}
+
+#details_content {
+  padding: 2rem;
 }
 
 #about-info {

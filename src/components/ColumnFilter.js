@@ -9,7 +9,7 @@ const ColumnFilter = ({ column, onExpandChange, onSelectionChange, controls}) =>
   <ExpansionList>
     <ExpansionPanel
       footer={null}
-      label='Filter by Column'
+      label='Order by Column'
       className='md-cell md-cell--4'
       onExpandToggle={(expanded) => onExpandChange(expanded, 'column')}
     >

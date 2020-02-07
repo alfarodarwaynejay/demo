@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router'
-import { Route, Switch } from 'react-router-dom'
 import { NavigationDrawer } from 'react-md'
+import { Route, Switch } from 'react-router-dom'
 
-import NavigationLink from '../components/NavigationLink'
-import About from '../components/About'
 import Customers from './Customers'
-import CustomerDetails from './CustomerDetails'
+import About from '../components/About'
 import capitalize from 'lodash/capitalize'
+import NavigationLink from '../components/NavigationLink'
 
 const navItems = [
   {
@@ -63,12 +62,11 @@ class App extends PureComponent {
         contentId="main-demo-content"
         contentStyle={{ minHeight: 'auto' }}
         contentClassName="md-grid"
-        defaultVisible
+        // defaultVisible
       >
         <Switch key={location.pathname}>
           <Route path={navItems[0].to} component={About} />
           <Route path={navItems[1].to} component={Customers} />
-          <Route path={`/customers/:id?`} component={CustomerDetails} />
 
           {/* default route */}
           <Route path={'/'} exact component={About} />

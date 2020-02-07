@@ -3,40 +3,22 @@ import ReactDOM from "react-dom"
 import App from './containers/App'
 import { Provider } from 'react-redux'
 import { createLogger } from 'redux-logger'
+import createSagaMiddleware from 'redux-saga'
 import { HashRouter as Router } from 'react-router-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 
-import { setInitialReducers } from './redux/reducers'
+import { setInitialReducers, initialState } from './redux/reducers'
+import sagas from './redux/sagas'
 
 const appReducer = combineReducers({
 	setInitialReducers
 })
 
-const loadState = () => {
-	try {
-		const serializedState = localStorage.getItem('reduxState')
-		if (serializedState === null) return undefined
-		return JSON.parse(serializedState)
-	} catch (err) {
-		console.log(err)
-		return undefined
-	}
-}
+const logger = createLogger()
+const sagaMiddleware = createSagaMiddleware()
 
-const saveState = (store) => {
-	try {
-		const serializedState = JSON.stringify(store.getState())
-		localStorage.setItem('reduxState', serializedState)
-	} catch (err) {
-		console.log(err)
-	}
-}
-
-const logger = createLogger();
-
-const persistedState = loadState();
-const store = createStore(appReducer, persistedState, applyMiddleware(logger))
-store.subscribe(() => { saveState(store) })
+const store = createStore(appReducer,initialState, applyMiddleware(sagaMiddleware, logger))
+sagaMiddleware.run(sagas)
 
 ReactDOM.render(
   <Provider store={store}>

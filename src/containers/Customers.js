@@ -1,19 +1,25 @@
 import React, { PureComponent } from 'react'
 import { Paper } from 'react-md'
 import { connect } from 'react-redux'
-import CustomerHeader from '../components/CustomerHeader'
 import CustomerList from '../components/CustomerList'
+import CustomerHeader from '../components/CustomerHeader'
+import CustomerDetails from '../components/CustomerDetails'
 
 import {
   GetGridList,
+  ClearDetails,
   GetItemDetails
 } from '../redux/actions'
 
 import {
+  selectionDefault
+} from '../defaults'
+
+const {
   orderControls,
   statusControls,
   columnControls
-} from '../defaults/selectionDefaults'
+} = selectionDefault
 
 class Customers extends PureComponent {
   constructor(props) {
@@ -28,10 +34,34 @@ class Customers extends PureComponent {
     }
   }
 
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(GetGridList(this.state))
+  }
+
+  componentWillMount() {
+    const { dispatch } =this.props
+    dispatch(GetGridList(this.state))
+  }
+
   componentDidUpdate() {
-    const { match, history } = this.props
-    if (match.params.id === ':id') {
+    const { dispatch, store, history, match: { params } } = this.props
+    console.log('@@didMount: ', this.props)
+
+    if (params.id === ':id') {
       history.push('/customers')
+    }
+
+    if (params.id && !store.details && store.grid.list.length) {
+      const data = store.grid.list.find(cust => cust.id === params.id)
+      dispatch(GetItemDetails({
+        data,
+        callBack: () => history.push(`/customers/${params.id}`)
+      }))
+    }
+
+    if (!params.id && store.details) {
+      dispatch(ClearDetails())
     }
   }
 
@@ -76,14 +106,23 @@ class Customers extends PureComponent {
     this.setState(state, () => dispatch(GetGridList(state)))
   }
 
-  handleRowClick = (id)  => {
-    const { history, location } = this.props
-    console.log('id: ', id)
-    history.push(`${location.pathname}/${id}`)
+  handleRowClick = (data)  => {
+    const { history, dispatch } = this.props
+    const { id } = data
+    dispatch(GetItemDetails({
+      data,
+      callBack: () => history.push(`/customers/${id}`)
+    }))
+  }
+
+  handleOnHide = () => {
+    const { dispatch, history } = this.props
+    dispatch(ClearDetails())
+    history.push('/customers')
   }
 
   render() {
-    const { store } = this.props
+    const { store = {} } = this.props
     const {
       search,
       filter: {
@@ -92,8 +131,6 @@ class Customers extends PureComponent {
         column
       }
     } = this.state
-    // this.props
-    console.log('this.props: ', this.props);
 
     return (
       <div className='md-grid' style={{ justifyContent: 'center'}}>
@@ -117,8 +154,12 @@ class Customers extends PureComponent {
             onSelectionChange={this.handleSelectionChange}
           />
           <CustomerList
-            store={store}
+            grid={store.grid}
             onRowClick={this.handleRowClick}
+          />
+          <CustomerDetails
+            details={store.details}
+            onHide={this.handleOnHide}
           />
         </Paper>
       </div>

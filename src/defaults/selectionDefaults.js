@@ -35,7 +35,7 @@ const orderControls = [
   }
 ]
 
-module.exports = {
+export default {
   orderControls,
   statusControls,
   columnControls

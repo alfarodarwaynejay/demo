@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import { axios, gridShaper, detailsShaper } from '../utils'
 import { all, call, put, takeLatest } from 'redux-saga/effects'
 import { REQUESTED, GET_GRID_LIST, GET_ITEM_DETAILS } from './types'

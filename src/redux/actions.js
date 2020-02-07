@@ -15,5 +15,10 @@ module.exports = {
     return {
       type: 'CLEAR_DETAILS'
     }
+  },
+  HideModal() {
+    return {
+      type: 'HIDE_MODAL'
+    }
   }
 }

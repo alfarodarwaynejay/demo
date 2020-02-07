@@ -5,24 +5,10 @@ import { NavigationDrawer } from 'react-md'
 import { Route, Switch } from 'react-router-dom'
 
 import Customers from './Customers'
+import { navItems } from '../defaults'
 import About from '../components/About'
 import capitalize from 'lodash/capitalize'
 import NavigationLink from '../components/NavigationLink'
-
-const navItems = [
-  {
-    label: 'About',
-    to: '/about',
-    exact: true,
-    icon: 'info_outline',
-  },
-  {
-    label: 'Customers',
-    to: '/customers/:id?',
-    exact: false,
-    icon: 'face',
-  }
-]
 
 class App extends PureComponent {
   static propTypes = {
@@ -62,7 +48,6 @@ class App extends PureComponent {
         contentId="main-demo-content"
         contentStyle={{ minHeight: 'auto' }}
         contentClassName="md-grid"
-        // defaultVisible
       >
         <Switch key={location.pathname}>
           <Route path={navItems[0].to} component={About} />

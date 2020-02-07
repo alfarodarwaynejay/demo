@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react'
 import { Paper } from 'react-md'
 import { connect } from 'react-redux'
+import Modal from '../components/Modal'
 import CustomerList from '../components/CustomerList'
 import CustomerHeader from '../components/CustomerHeader'
 import CustomerDetails from '../components/CustomerDetails'
 
 import {
+  HideModal,
   GetGridList,
   ClearDetails,
   GetItemDetails
@@ -46,7 +48,6 @@ class Customers extends PureComponent {
 
   componentDidUpdate() {
     const { dispatch, store, history, match: { params } } = this.props
-    console.log('@@didMount: ', this.props)
 
     if (params.id === ':id') {
       history.push('/customers')
@@ -115,8 +116,12 @@ class Customers extends PureComponent {
     }))
   }
 
-  handleOnHide = () => {
+  handleOnHide = (modal) => {
     const { dispatch, history } = this.props
+    if (modal) {
+      dispatch(HideModal())
+      return
+    }
     dispatch(ClearDetails())
     history.push('/customers')
   }
@@ -160,6 +165,10 @@ class Customers extends PureComponent {
           <CustomerDetails
             details={store.details}
             onHide={this.handleOnHide}
+          />
+          <Modal
+            errors={store.errors}
+            onHide={() => this.handleOnHide('modal')}
           />
         </Paper>
       </div>

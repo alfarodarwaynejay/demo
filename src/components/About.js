@@ -5,14 +5,7 @@ import {
   FontIcon,
   ListItem,
 } from 'react-md'
-
-const requirements = [
-  'Axios',
-  'React',
-  'React-Router',
-  'Redux & Redux-Saga',
-  'Webpack'
-]
+import { requirements, link } from '../defaults'
 
 const About = () => (
   <div className='md-grid' style={{justifyContent: 'center'}}>
@@ -33,8 +26,9 @@ const About = () => (
             {requirements.map(req => (
               <ListItem
                 key={req}
-                leftIcon={<FontIcon>star</FontIcon>}
                 primaryText={req}
+                leftIcon={<FontIcon>star</FontIcon>}
+                onClick={() => window.open(link[req], '_blank')}
               />
             ))}
           </List>

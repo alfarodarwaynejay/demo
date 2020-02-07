@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableColumn,
 } from 'react-md'
+import { customerListTable } from '../defaults'
 
 const CustomerList = (props) => {
   const {
@@ -14,21 +15,14 @@ const CustomerList = (props) => {
     grid: { list = [] }
   } = props
   const tableHeader = () => {
-    const tableColumns = [
-      'First tName',
-      'Last Name',
-      'Email',
-      'Status',
-      'View Details'
-    ]
     return (
       <TableHeader>
-      <TableRow>
-        {tableColumns.map((col_label) => (
-          <TableColumn key={col_label}>{col_label}</TableColumn>
-        ))}
-      </TableRow>
-    </TableHeader>
+        <TableRow>
+          {customerListTable.map((col_label) => (
+            <TableColumn key={col_label}>{col_label}</TableColumn>
+          ))}
+        </TableRow>
+      </TableHeader>
     )
   }
 

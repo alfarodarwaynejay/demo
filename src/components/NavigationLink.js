@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
-import { FontIcon, ListItem } from 'react-md';
+import { FontIcon, ListItem, Tooltipped } from 'react-md';
 
 const NavItemLink = ({ label, to, icon, exact }) => (
   <Route path={to} exact={exact}>
@@ -14,14 +14,20 @@ const NavItemLink = ({ label, to, icon, exact }) => (
       }
 
       return (
-        <ListItem
-          to={to}
-          component={Link}
-          primaryText={label}
-          leftIcon={leftIcon}
-          active={!!match || isRoot}
-        />
-      );
+        <Tooltipped
+          label={label}
+          position="right"
+          setPosition
+        >
+          <ListItem
+            to={to}
+            component={Link}
+            primaryText={label}
+            leftIcon={leftIcon}
+            active={!!match || isRoot}
+          />
+        </Tooltipped>
+      )
     }}
   </Route>
 );

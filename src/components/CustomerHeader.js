@@ -26,16 +26,16 @@ const CustomerHeader = (props) => {
         onExpandChange={onExpandChange}
         onSelectionChange={onSelectionChange}
       />
+      <SearchBar
+        value={search}
+        onChange={onChange}
+        className='md-cell--8 about_sub__header'
+      />
       <ColumnFilter
         column={column}
         controls={columnControls}
         onExpandChange={onExpandChange}
         onSelectionChange={onSelectionChange}
-      />
-      <SearchBar
-        value={search}
-        onChange={onChange}
-        className='md-cell--8 about_sub__header'
       />
       <SortDirection
         column={order}

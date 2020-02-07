@@ -7,8 +7,8 @@ import createSagaMiddleware from 'redux-saga'
 import { HashRouter as Router } from 'react-router-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 
-import { setInitialReducers, initialState } from './redux/reducers'
 import sagas from './redux/sagas'
+import { setInitialReducers } from './redux/reducers'
 
 const appReducer = combineReducers({
 	setInitialReducers
@@ -17,7 +17,7 @@ const appReducer = combineReducers({
 const logger = createLogger()
 const sagaMiddleware = createSagaMiddleware()
 
-const store = createStore(appReducer,initialState, applyMiddleware(sagaMiddleware, logger))
+const store = createStore(appReducer, applyMiddleware(sagaMiddleware, logger))
 sagaMiddleware.run(sagas)
 
 ReactDOM.render(

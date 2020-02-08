@@ -1,5 +1,9 @@
 const statusControls = [
   {
+    label: 'None',
+    value: 'none'
+  },
+  {
     label: 'Active',
     value: 'ACTIVE'
   },
@@ -10,6 +14,10 @@ const statusControls = [
 ]
 
 const columnControls = [
+  {
+    label: 'None',
+    value: 'none'
+  },
   {
     label: 'First Name',
     value: 'firstName'

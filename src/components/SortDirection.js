@@ -1,17 +1,17 @@
 import React from 'react'
 import { SelectionControlGroup } from 'react-md'
 
-const SortDirection = ({ order, onSelectionChange, controls}) => (
-  <div className='md-grid'>
-    <span className='md-cell--12'>Sort Direction:</span>
+const SortDirection = ({ className, order, onSelectionChange, controls }) => (
+  <div className={`md-grid ${className}`}>
+    <span className='md-cell--3 searchLabel'>Sort Direction:</span>
     <SelectionControlGroup
-      inline
+      // inline
       type='radio'
       value={order}
       id='order-filter'
       name="order-filter"
       controls={controls}
-      className='md-cell--12'
+      className='md-cell--9'
       onChange={(value, e) => onSelectionChange(value, e, 'order')}
     />
   </div>

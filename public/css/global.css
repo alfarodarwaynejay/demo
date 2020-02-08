@@ -58,12 +58,30 @@
     box-shadow: -3px 3px 7px 1px #ccc;
 }
 
+.about_sub__header .md-list-tile {
+  cursor: auto;
+}
+
 .details_divider {
   margin: 1rem
 }
 
 .recurring_inv {
   margin: 0 1rem;
+}
+
+.searchBar {
+  justify-content: center;
+}
+
+.searchLabel {
+padding-top: 1rem;
+}
+
+.filter-drop--down {
+  width: calc(73% - 16px);
+  display: inline-block;
+  position: relative;
 }
 
 #details_paper {
@@ -85,6 +103,4 @@
   color: 'red'
 }
 
-.about_sub__header .md-list-tile {
-  cursor: auto;
-}
+

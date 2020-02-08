@@ -11,10 +11,11 @@ export default function (list, search, status, order, column) {
   // filter by search field
   if (search) {
     list = list.filter(customer => {
-      const { email, personalDetails = {} } = customer
+      const { status, email, personalDetails = {} } = customer
       const { firstName = '', lastName = '' } = personalDetails
       return (
         toLower(email).includes(search)
+        || toLower(status).includes(search)
         || toLower(firstName).includes(search)
         || toLower(lastName).includes(search)
       )

@@ -15,10 +15,6 @@ const statusControls = [
 
 const columnControls = [
   {
-    label: 'None',
-    value: 'none'
-  },
-  {
     label: 'First Name',
     value: 'firstName'
   },

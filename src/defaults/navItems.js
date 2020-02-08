@@ -7,7 +7,7 @@ export default [
   },
   {
     label: 'Customers',
-    to: '/customers/:id?',
+    to: '/customers',
     exact: false,
     icon: 'face',
   }

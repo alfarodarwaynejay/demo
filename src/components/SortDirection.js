@@ -5,7 +5,6 @@ const SortDirection = ({ className, order, onSelectionChange, controls }) => (
   <div className={`md-grid ${className}`}>
     <span className='md-cell--3 searchLabel'>Sort Direction:</span>
     <SelectionControlGroup
-      // inline
       type='radio'
       value={order}
       id='order-filter'

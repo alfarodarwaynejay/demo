@@ -4,16 +4,15 @@ import { connect } from 'react-redux'
 import Modal from '../components/Modal'
 import CustomerList from '../components/CustomerList'
 import CustomerHeader from '../components/CustomerHeader'
-import CustomerDetails from '../components/CustomerDetails'
 
 import {
   HideModal,
   GetGridList,
-  ClearDetails,
   GetItemDetails
 } from '../redux/actions'
 
 import {
+  gridDefaults,
   selectionDefault
 } from '../defaults'
 
@@ -26,14 +25,7 @@ const {
 class Customers extends PureComponent {
   constructor(props) {
     super(props)
-    this.state = {
-      search: '',
-      filter: {
-        status: '',
-        column: '',
-        order: 'asc'
-      }
-    }
+    this.state = { ...gridDefaults }
   }
 
   componentDidMount() {
@@ -41,36 +33,33 @@ class Customers extends PureComponent {
     dispatch(GetGridList(this.state))
   }
 
-  componentWillMount() {
-    const { dispatch } =this.props
-    dispatch(GetGridList(this.state))
-  }
+  // componentWillMount() {
+  //   const { dispatch } = this.props
+  //   dispatch(GetGridList(this.state))
+  // }
 
-  componentDidUpdate() {
-    const { dispatch, store, history, match: { params } } = this.props
+  // componentDidUpdate() {
+  //   const { dispatch, store, history, match: { params } } = this.props
+  //   console.log('@@@DidUpdate: ', this.props)
 
-    if (params.id === ':id') {
-      history.push('/customers')
-    }
+  //   if (params.id === ':id') {
+  //     history.push('/customers')
+  //   }
 
-    if (params.id && !store.details && store.grid.list.length) {
-      const data = store.grid.list.find(cust => cust.id === params.id)
-      dispatch(GetItemDetails({
-        data,
-        callBack: () => history.push(`/customers/${params.id}`)
-      }))
-    }
-
-    if (!params.id && store.details) {
-      dispatch(ClearDetails())
-    }
-  }
+  //   if (params.id && !store.details && store.grid.list.length) {
+  //     const data = store.grid.list.find(cust => cust.id === params.id)
+  //     dispatch(GetItemDetails({
+  //       data,
+  //       callBack: () => history.push(`/customers/${params.id}`)
+  //     }))
+  //   }
+  // }
 
   handleInputChange = (search, e) => {
     e.preventDefault()
     e.stopPropagation()
     const { dispatch } = this.props
-    const state = { ...this.state, search}
+    const state = { ...this.state, search }
 
     this.setState(state, () => dispatch(GetGridList(state)))
   }
@@ -107,7 +96,7 @@ class Customers extends PureComponent {
     this.setState(state, () => dispatch(GetGridList(state)))
   }
 
-  handleRowClick = (data)  => {
+  handleRowClick = (data) => {
     const { history, dispatch } = this.props
     const { id } = data
     dispatch(GetItemDetails({
@@ -122,8 +111,6 @@ class Customers extends PureComponent {
       dispatch(HideModal())
       return
     }
-    dispatch(ClearDetails())
-    history.push('/customers')
   }
 
   render() {
@@ -138,41 +125,37 @@ class Customers extends PureComponent {
     } = this.state
 
     return (
-      <div className='md-grid' style={{ justifyContent: 'center'}}>
-      <div className='md-cell--10'>
-        <Paper
-          key='paper'
-          zDepth={3}
-          className='papers__example md-grid'
-        >
-          <h1 className='demo__header'>Customers List</h1>
-          <CustomerHeader
-            order={order}
-            status={status}
-            search={search}
-            column={column}
-            orderControls={orderControls}
-            columnControls={columnControls}
-            statusControls={statusControls}
-            onChange={this.handleInputChange}
-            onExpandChange={this.handleExpansionExpand}
-            onSelectionChange={this.handleSelectionChange}
-          />
-          <CustomerList
-            grid={store.grid}
-            onRowClick={this.handleRowClick}
-          />
-          <CustomerDetails
-            details={store.details}
-            onHide={this.handleOnHide}
-          />
-          <Modal
-            errors={store.errors}
-            onHide={() => this.handleOnHide('modal')}
-          />
-        </Paper>
+      <div className='md-grid' style={{ justifyContent: 'center' }}>
+        <div className='md-cell--10'>
+          <Paper
+            key='paper'
+            zDepth={3}
+            className='papers__example md-grid'
+          >
+            <h1 className='demo__header'>Customers List</h1>
+            <CustomerHeader
+              order={order}
+              status={status}
+              search={search}
+              column={column}
+              orderControls={orderControls}
+              columnControls={columnControls}
+              statusControls={statusControls}
+              onChange={this.handleInputChange}
+              onExpandChange={this.handleExpansionExpand}
+              onSelectionChange={this.handleSelectionChange}
+            />
+            <CustomerList
+              grid={store.grid}
+              onRowClick={this.handleRowClick}
+            />
+            <Modal
+              errors={store.errors}
+              onHide={() => this.handleOnHide('modal')}
+            />
+          </Paper>
+        </div>
       </div>
-    </div>
     )
   }
 }

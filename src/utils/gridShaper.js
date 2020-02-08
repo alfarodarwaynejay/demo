@@ -4,7 +4,7 @@ import filterFunc from './filterFunc'
 
 export default function (list, search, status, order, column) {
   // filter by status
-  if (status) {
+  if (status !== 'none') {
     list = list.filter(customer => customer.status === status)
   }
 

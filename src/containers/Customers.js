@@ -8,6 +8,7 @@ import CustomerHeader from '../components/CustomerHeader'
 import {
   HideModal,
   GetGridList,
+  ClearDetails,
   GetItemDetails
 } from '../redux/actions'
 
@@ -29,31 +30,13 @@ class Customers extends PureComponent {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props
+    const { dispatch, store, match: { params } } = this.props
     dispatch(GetGridList(this.state))
+
+    if (store.details && !params.id) {
+      dispatch(ClearDetails())
+    }
   }
-
-  // componentWillMount() {
-  //   const { dispatch } = this.props
-  //   dispatch(GetGridList(this.state))
-  // }
-
-  // componentDidUpdate() {
-  //   const { dispatch, store, history, match: { params } } = this.props
-  //   console.log('@@@DidUpdate: ', this.props)
-
-  //   if (params.id === ':id') {
-  //     history.push('/customers')
-  //   }
-
-  //   if (params.id && !store.details && store.grid.list.length) {
-  //     const data = store.grid.list.find(cust => cust.id === params.id)
-  //     dispatch(GetItemDetails({
-  //       data,
-  //       callBack: () => history.push(`/customers/${params.id}`)
-  //     }))
-  //   }
-  // }
 
   handleInputChange = (search, e) => {
     e.preventDefault()

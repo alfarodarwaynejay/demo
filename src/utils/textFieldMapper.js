@@ -13,7 +13,8 @@ const textFieldMapper = (obj, keys) => {
         value={val || 'none'}
         className="md-cell--4"
       />
-  )})
+    )
+  })
 }
 
 export default textFieldMapper

@@ -15,6 +15,7 @@ import { textFieldMapper } from '../utils'
 
 import {
   GetGridList,
+  ClearDetails,
   GetItemDetails
 } from '../redux/actions'
 
@@ -43,11 +44,14 @@ class CustomerDetails extends PureComponent {
     }
   }
 
+  onHide = () => {
+    const { dispatch, history } = this.props
+    dispatch(ClearDetails())
+    history.push('/customers')
+  }
+
   render() {
-    const {
-      onHide,
-      store: { details }
-    } = this.props
+    const { store: { details } } = this.props
 
     const {
       goal_data = {},
@@ -75,11 +79,11 @@ class CustomerDetails extends PureComponent {
               className='papers__example md-cell--10'
             >
               <Button
-                onClick={onHide}
+                onClick={this.onHide}
                 flat primary swapTheming
               >
                 Back
-            </Button>
+              </Button>
               <h1 className='demo__header'>Customers Details</h1>
               <div className='md-grid'>
                 <Img

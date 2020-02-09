@@ -106,7 +106,7 @@ class Customers extends PureComponent {
   }
 
   handleOnHide = (modal) => {
-    const { dispatch, history } = this.props
+    const { dispatch } = this.props
     if (modal) {
       dispatch(HideModal())
       return

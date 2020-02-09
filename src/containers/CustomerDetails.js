@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import Img from 'react-image'
+import { connect } from 'react-redux'
 import {
   Paper,
   Button,
@@ -25,18 +26,19 @@ const {
 
 class CustomerDetails extends PureComponent {
   componentDidMount() {
-    const { dispatch, store, history, location: { pathname } } = this.props
-    const id = pathname.replace('/customers/', '')
-
-    if (!store.grid.list.length) {
+    const { dispatch, store } = this.props
+    if (!store.grid.count) {
       dispatch(GetGridList(gridDefaults))
     }
+  }
 
-    if (id && !store.details && store.grid.list.length) {
-      const data = store.grid.list.find(cust => cust.id === id)
+  componentDidUpdate() {
+    const { dispatch, store, history, match: { params } } = this.props
+    if (params.id && !store.details && store.grid.count) {
+      const data = store.grid.list.find(cust => cust.id === params.id)
       dispatch(GetItemDetails({
         data,
-        callBack: () => history.push(`/customers/${id}`)
+        callBack: () => history.push(`/customers/${params.id}`)
       }))
     }
   }
@@ -44,7 +46,7 @@ class CustomerDetails extends PureComponent {
   render() {
     const {
       onHide,
-      details
+      store: { details }
     } = this.props
 
     const {
@@ -119,4 +121,7 @@ class CustomerDetails extends PureComponent {
   }
 }
 
-export default CustomerDetails
+export default connect(
+  ({ setInitialReducers }) => ({ store: { ...setInitialReducers } }),
+  null
+)(CustomerDetails)

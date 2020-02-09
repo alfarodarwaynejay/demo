@@ -17,7 +17,7 @@
 - [Redux-Saga]('https://redux-saga.js.org/') -  handles side-effects, especially API calls.
 - [Webpack]('https://webpack.js.org/') - javascript bundler to package the whole app.
 
-## INSTALLION:
+## RUNNING THE APP:
 1. clone this repo:
 >`git clone https://github.com/alfarodarwaynejay/demo.git`
 
@@ -26,3 +26,6 @@
 
 3. run the app:
 > `npm run start`
+
+## BUILD DIST FOLDER
+> run `npm run build`

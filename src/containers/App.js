@@ -43,7 +43,7 @@ class App extends PureComponent {
 
     const { personalDetails: { legalName } = {} } = store.details || {}
     const lastSection = pathname.substring(pathname.lastIndexOf('/') + 1)
-    return !store.details ? capitalize(lastSection || 'about') : legalName
+    return !store.details ? capitalize(lastSection || 'customers') : legalName
   }
 
   onHide = () => {
@@ -65,7 +65,10 @@ class App extends PureComponent {
         mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY_MINI}
         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
-        navItems={navItems.map(props => <NavigationLink {...props} key={props.to} />)}
+        navItems={navItems.map(props => (
+          <NavigationLink {...props} key={props.to} root='/customers' />
+        )
+        )}
       >
         <Switch key={location.pathname}>
           <Route path={navItems[0].to} component={About} />
@@ -73,7 +76,7 @@ class App extends PureComponent {
           <Route path={`${navItems[1].to}/:id?`} component={CustomeDetails} />
 
           {/* default route */}
-          <Route path={'/'} exact component={About} />
+          <Route path={'/'} component={Customers} />
         </Switch>
       </NavigationDrawer>
     )

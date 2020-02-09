@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Link, Route } from 'react-router-dom';
 import { FontIcon, ListItem, Tooltipped } from 'react-md';
 
-const NavItemLink = ({ label, to, icon, exact }) => (
+const NavItemLink = ({ label, to, icon, exact, root }) => (
   <Route path={to} exact={exact}>
     {({ match, location }) => {
       let leftIcon
-      const isAbout = to === '/about'
-      const isRoot = location.pathname === '/' && isAbout
+      const isCustomer = to === root
+      const isRoot = location.pathname === '/' && isCustomer
       if (icon) {
         leftIcon = <FontIcon>{icon}</FontIcon>
       }

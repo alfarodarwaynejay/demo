@@ -46,6 +46,7 @@
 .demo__header {
   text-align: center;
   width: 100%;
+  color: #3f51b5; 
 }
 
 .details_img {
@@ -59,19 +60,15 @@
 }
 
 .about_sub__header .md-list-tile {
-  cursor: auto;
+  /*cursor: auto;*/
 }
 
 .details_divider {
-  margin: 1rem
+  margin: 1.5rem 0 0 0;
 }
 
 .recurring_inv {
   margin: 0 1rem;
-}
-
-.searchBar {
-  justify-content: center;
 }
 
 .searchLabel {
@@ -86,6 +83,8 @@ padding-top: 1rem;
 
 #details_paper {
   padding: 3rem;
+  padding-top: 0;
+  margin-top: -54px;
   justify-content: center;
 }
 
@@ -103,4 +102,86 @@ padding-top: 1rem;
   color: 'red'
 }
 
+.md-menu--select-field {
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+.md-menu--select-field:focus {
+  outline: none;
+  box-shadow: none;
+}
+.md-paper--1.md-select-field {
+  box-shadow: none;
+}
+.md-select-field__toggle .md-text-field--floating-margin {
+  margin-top: 15px;
+}
+.md-select-field--btn.md-select-field--btn {
+  padding: 0;
+}
+.md-select-field--btn .md-icon-text {
+    padding-left: 0;
+    margin-left: 0;
+    margin-top: 10px;
+}
+.md-select-field--btn .md-icon {
+  margin-left: auto;
+}
 
+.filters {
+  margin: 0;
+  padding: 0;
+  align-items: flex-end;
+}
+
+.searchBar {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.filter_status,
+.filter_column {
+  padding: 4px 0;
+  margin: 0;
+}
+.filter_order {
+  padding: 8px 0;
+  width: 40px;
+  margin-left: 0;
+  margin-right: 0;
+  justify-content: flex-end;
+}
+.filter_order .md-btn--icon {
+  height: 38px;
+  width: 18px;
+  padding: 0;
+}
+.filter_order .md-btn:hover {
+  background: none;
+}
+.customer_list .md-table-row {
+  cursor: pointer;
+}
+
+.md-table-header {
+  border-bottom: 2px solid #3f51b5;
+}
+.md-table-column--header {
+  color: #3f51b5;
+  font-weight: bold;
+}
+
+.customer_details .details_divider {
+  margin-top: 0;
+}
+.customer_details {
+  margin-bottom: 2rem;
+}
+.financial_header {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+.financial_goals .md-table-row td:last-child .md-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0;
+}

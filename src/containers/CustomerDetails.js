@@ -1,17 +1,12 @@
 import React, { PureComponent } from 'react'
 import Img from 'react-image'
 import { connect } from 'react-redux'
-import {
-  Paper,
-  Button,
-  Divider
-} from 'react-md'
+import { Paper, Button, Divider } from 'react-md'
 
+import { textFieldMapper } from '../utils'
 import PlanList from '../components/PlanList'
 import GoalHeader from '../components/GoalHeader'
 import { detailsKeys, gridDefaults } from '../defaults'
-console.log('gridDefaults: ', gridDefaults)
-import { textFieldMapper } from '../utils'
 
 import {
   GetGridList,
@@ -84,8 +79,8 @@ class CustomerDetails extends PureComponent {
               >
                 Back
               </Button>
-              <h1 className='demo__header'>Customers Details</h1>
-              <div className='md-grid'>
+              <h1 className='demo__header customer_header'>Customers Details</h1>
+              <div className='md-grid customer_details'>
                 <Img
                   src={src}
                   alt='Image Loader'
@@ -94,20 +89,20 @@ class CustomerDetails extends PureComponent {
                 <div
                   className='md-grid md-cell--9'
                 >
-                  <label className='md-cell--12 contact_span details_divider'>
+                  <h3 className='md-cell--12 contact_span details_divider'>
                     Personal Details:
-                  </label>
+                  </h3>
                   {textFieldMapper(personalDetails || {}, personalDetailsKeys)}
-                  <label className='md-cell--12 contact_span details_divider'>
+                  <h3 className='md-cell--12 contact_span details_divider'>
                     Contact Details:
-                  </label>
+                  </h3>
                   {textFieldMapper(phoneDetails || {}, phoneDetailsKeys)}
                   {textFieldMapper(details || {}, emailStatus)}
                 </div>
               </div>
               <Divider className='details_divider' />
-              <h2 className='demo__header'>Financial Goals</h2>
-              <div className='md-grid' >
+              <h1 className='demo__header financial_header'>Financial Goals</h1>
+              <div className='md-grid  financial_goals' >
                 <h3 className='md-cell--12 contact_span details_divider'>
                   Goal Info:
                 </h3>

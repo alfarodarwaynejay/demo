@@ -1,18 +1,21 @@
 import React from 'react'
-import { SelectionControlGroup } from 'react-md'
+import { SelectField } from 'react-md'
 
-const StatusFilter = ({ status, onExpandChange, onSelectionChange, controls, className }) => (
+const StatusFilter = ({ status, onSelectionChange, controls, className }) => (
   <div className={`md-grid ${className}`}>
-    <span className='md-cell--3 searchLabel'>Filter by Status:</span>
-    <SelectionControlGroup
-      type='radio'
+    <SelectField
       value={status}
       id='status-filter'
       name="status-filter"
-      controls={controls}
-      onChange={(value, e) => onSelectionChange(value, e, 'status')}
+      placeholder="Status"
+      menuItems={controls}
+      label="Filter by Status:"
+      className="md-cell md-cell--12"
+      position={SelectField.Positions.BELOW}
+      onChange={(value) => onSelectionChange(value, 'status')}
     />
   </div>
 )
+
 
 export default StatusFilter

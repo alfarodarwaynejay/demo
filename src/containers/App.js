@@ -9,8 +9,8 @@ import Customers from './Customers'
 import { navItems } from '../defaults'
 import About from '../components/About'
 import capitalize from 'lodash/capitalize'
-import NavigationLink from '../components/NavigationLink'
 import CustomeDetails from './CustomerDetails'
+import NavigationLink from '../components/NavigationLink'
 
 import {
   ClearDetails
@@ -58,14 +58,14 @@ class App extends PureComponent {
 
     return (
       <NavigationDrawer
+        contentClassName="md-grid"
         toolbarTitle={toolbarTitle}
+        contentId="main-demo-content"
+        contentStyle={{ minHeight: 'auto' }}
         mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY_MINI}
         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
         navItems={navItems.map(props => <NavigationLink {...props} key={props.to} />)}
-        contentId="main-demo-content"
-        contentStyle={{ minHeight: 'auto' }}
-        contentClassName="md-grid"
       >
         <Switch key={location.pathname}>
           <Route path={navItems[0].to} component={About} />

@@ -49,7 +49,7 @@ const PlanList = ({ plans }) => {
     })
   }
   return (
-    <DataTable plain>
+    <DataTable plain responsive className='md-cell md-cell--12'>
     {tableHeader()}
     <TableBody>
       {tableRow()}

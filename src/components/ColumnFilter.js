@@ -1,17 +1,17 @@
 import React from 'react'
-import { SelectionControlGroup } from 'react-md'
+import { SelectField } from 'react-md'
 
-const ColumnFilter = ({ className, column, onExpandChange, onSelectionChange, controls }) => (
+const ColumnFilter = ({ className, column, onSelectionChange, controls }) => (
   <div className={`md-grid ${className}`}>
-    <span className='md-cell--3 searchLabel'>Order by Column:</span>
-    <SelectionControlGroup
-      // inline
-      type='radio'
+    <SelectField
       value={column}
       id='column-filter'
-      name="column-filter"
-      controls={controls}
-      onChange={(value, e) => onSelectionChange(value, e, 'column')}
+      name="status-filter"
+      menuItems={controls}
+      label="Order by Columns:"
+      className="md-cell md-cell--12"
+      position={SelectField.Positions.BELOW}
+      onChange={(value) => onSelectionChange(value, 'column')}
     />
   </div>
 )

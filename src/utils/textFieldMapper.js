@@ -11,7 +11,7 @@ const textFieldMapper = (obj, keys) => {
         label={`${key}: `}
         id={key}
         value={val || 'none'}
-        className="md-cell--4"
+        className="md-cell md-cell--4"
       />
     )
   })

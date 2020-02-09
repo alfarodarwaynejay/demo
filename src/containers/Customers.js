@@ -63,9 +63,9 @@ class Customers extends PureComponent {
     }
   }
 
-  handleSelectionChange = (value, e, id) => {
-    e.preventDefault()
-    e.stopPropagation()
+  handleSelectionChange = (value, id) => {
+    // e.preventDefault()
+    // e.stopPropagation()
 
     const { dispatch } = this.props
     const { filter, ...restState } = this.state
@@ -113,7 +113,7 @@ class Customers extends PureComponent {
           <Paper
             key='paper'
             zDepth={3}
-            className='papers__example md-grid'
+            className='papers__example md-grid customer_list'
           >
             <h1 className='demo__header'>Customers List</h1>
             <CustomerHeader

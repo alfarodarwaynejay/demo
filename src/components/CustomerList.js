@@ -50,7 +50,7 @@ const CustomerList = (props) => {
     })
   }
   return (
-    <DataTable plain>
+    <DataTable plain responsive className='md-cell--12'>
     {tableHeader()}
     <TableBody>
       {tableRow()}

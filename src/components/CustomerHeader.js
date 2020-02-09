@@ -10,42 +10,38 @@ const CustomerHeader = (props) => {
     status,
     column,
     search,
+    onChange,
     orderControls,
     statusControls,
     columnControls,
-    onChange,
-    onExpandChange,
     onSelectionChange
   } = props
 
   return (
-    <div className='md-grid'>
+    <div className='md-grid md-cell--12 filters'>
 
       <SearchBar
         value={search}
         onChange={onChange}
-        className='md-grid searchBar md-cell--12 about_sub__header'
+        className='md-grid searchBar md-cell--4'
       />
       <StatusFilter
         status={status}
         controls={statusControls}
-        onExpandChange={onExpandChange}
         onSelectionChange={onSelectionChange}
-        className='md-cell--4 about_sub__header'
+        className='md-cell--2 filter_status'
       />
       <ColumnFilter
         column={column}
         controls={columnControls}
-        onExpandChange={onExpandChange}
         onSelectionChange={onSelectionChange}
-        className='md-cell--4 about_sub__header'
+        className='md-cell--2 filter_column'
       />
       <SortDirection
-        column={order}
+        order={order}
         controls={orderControls}
-        onExpandChange={onExpandChange}
         onSelectionChange={onSelectionChange}
-        className='md-cell--4 about_sub__header'
+        className='md-cell--2 filter_order'
       />
     </div>
   )

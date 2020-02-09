@@ -71,9 +71,9 @@ class App extends PureComponent {
         )}
       >
         <Switch key={location.pathname}>
-          <Route path={navItems[0].to} component={About} />
-          <Route path={navItems[1].to} exact component={Customers} />
-          <Route path={`${navItems[1].to}/:id?`} component={CustomeDetails} />
+          <Route path={navItems[0].to} exact component={Customers} />
+          <Route path={navItems[1].to} component={About} />
+          <Route path={`${navItems[0].to}/:id?`} component={CustomeDetails} />
 
           {/* default route */}
           <Route path={'/'} component={Customers} />

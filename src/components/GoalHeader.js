@@ -1,10 +1,10 @@
 import React from 'react'
 import { textFieldMapper } from '../utils'
 
-const GoalHeader = ({ goal_data, className }) => {
+const GoalHeader = ({ goal, className }) => {
   return (
     <div className={`md-grid ${className}`}>
-      {textFieldMapper(goal_data[0] || {}, ['name', 'targetRatio', 'status'])}
+      {textFieldMapper(goal, ['name', 'targetRatio', 'status'])}
     </div>
   )
 }

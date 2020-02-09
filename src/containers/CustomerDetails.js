@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { Paper, Button, Divider } from 'react-md'
 
 import { textFieldMapper } from '../utils'
-import PlanList from '../components/PlanList'
-import GoalHeader from '../components/GoalHeader'
+import GoalDetails from '../components/GoalDetails'
 import { detailsKeys, gridDefaults } from '../defaults'
 
 import {
@@ -18,7 +17,7 @@ const {
   emailStatus,
   phoneDetailsKeys,
   personalDetailsKeys
-} = detailsKeys
+} = detailsKeys || {}
 
 class CustomerDetails extends PureComponent {
   componentDidMount() {
@@ -47,15 +46,13 @@ class CustomerDetails extends PureComponent {
 
   render() {
     const { store: { details } } = this.props
+    console.log('this.props: ', this.props)
 
     const {
-      goal_data = {},
+      goal_data = [],
       phoneDetails = {},
       personalDetails = {}
     } = details || {}
-
-
-    const plans = goal_data.length ? goal_data[0].plans : []
 
 
     const src = [
@@ -102,16 +99,7 @@ class CustomerDetails extends PureComponent {
               </div>
               <Divider className='details_divider' />
               <h1 className='demo__header financial_header'>Financial Goals</h1>
-              <div className='md-grid  financial_goals' >
-                <h3 className='md-cell--12 contact_span details_divider'>
-                  Goal Info:
-                </h3>
-                <GoalHeader goal_data={goal_data || []} className='md-cell--12' />
-                <h3 className='md-cell--12 contact_span details_divider'>
-                  Existing Plans:
-                </h3>
-                <PlanList plans={plans || []} />
-              </div>
+              <GoalDetails goal_data={goal_data} />
             </Paper>
           </div>
         </section>

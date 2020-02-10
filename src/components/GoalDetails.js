@@ -29,9 +29,9 @@ const GoalDetails = ({ goal_data }) => {
   return (
     <>
       <div className='md-grid  financial_goals' >
-        <h3 className='md-cell--12 contact_span details_divider'>
+        {/* <h3 className='md-cell--12 contact_span details_divider'>
           Goal Info:
-        </h3>
+        </h3> */}
         <GoalHeader
           goal_data={goal_data}
           onRowClick={onRowClick}

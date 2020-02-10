@@ -46,7 +46,6 @@ class CustomerDetails extends PureComponent {
 
   render() {
     const { store: { details } } = this.props
-    console.log('this.props: ', this.props)
 
     const {
       goal_data = [],
@@ -98,8 +97,12 @@ class CustomerDetails extends PureComponent {
                 </div>
               </div>
               <Divider className='details_divider' />
-              <h1 className='demo__header financial_header'>Financial Goals</h1>
-              <GoalDetails goal_data={goal_data} />
+              {!!goal_data.length && (
+                <>
+                  <h1 className='demo__header financial_header'>Financial Goals</h1>
+                  <GoalDetails goal_data={goal_data} />
+                </>)
+              }
             </Paper>
           </div>
         </section>

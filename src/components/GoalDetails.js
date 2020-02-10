@@ -2,7 +2,7 @@ import React from 'react'
 import { Divider } from 'react-md'
 import PlanList from './PlanList'
 import GoalHeader from './GoalHeader'
-const GoalDetails = ({ goal_data }) => (
+const GoalDetails = ({ goal_data }) => !!goal_data.length && (
   <>
     {
       goal_data.map(goal => {

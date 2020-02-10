@@ -28,9 +28,13 @@ function* GetItemDetails({ payload }) {
     axios,
     `/public/data/goal_${data.id}.json`,
     GET_ITEM_DETAILS,
-    goal_data => detailsShaper(goal_data, data),
+    goal_data => detailsShaper(data, goal_data),
+    GET_ITEM_DETAILS,
+    () => detailsShaper(data),
     { message: 'Record does not exist..' }
   )
+
+  console.log('result: ', result);
 
   if (result.type === GET_ITEM_DETAILS) {
     yield all([

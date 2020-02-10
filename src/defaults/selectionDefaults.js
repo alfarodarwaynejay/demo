@@ -1,14 +1,10 @@
 const statusControls = [
-  // {
-  //   label: 'None',
-  //   value: 'none'
-  // },
   {
     label: 'Active',
     value: 'ACTIVE'
   },
   {
-    label: 'InActive',
+    label: 'Inactive',
     value: 'INACTIVE'
   },
   {

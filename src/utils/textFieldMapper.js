@@ -2,13 +2,13 @@ import React from 'react'
 import { TextField } from 'react-md'
 import toLower from 'lodash/toLower'
 import startCase from 'lodash/startCase'
+import customTextFieldKeys from '../defaults/customTextFieldKeys'
 
 const textFieldMapper = (obj, keys) => {
   return keys.map(key => {
     const val = obj[key]
-    const label = key === 'dob'
-      ? 'Date of Birth'
-      : startCase(toLower(startCase(key)))
+    const label = customTextFieldKeys[key]
+      || startCase(toLower(startCase(key)))
     return (
       <TextField
         disabled

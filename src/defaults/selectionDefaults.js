@@ -1,8 +1,8 @@
 const statusControls = [
-  {
-    label: 'None',
-    value: 'none'
-  },
+  // {
+  //   label: 'None',
+  //   value: 'none'
+  // },
   {
     label: 'Active',
     value: 'ACTIVE'

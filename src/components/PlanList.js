@@ -52,7 +52,7 @@ const PlanList = ({ plans }) => {
   return (
     <Paper
       key='paper'
-      zDepth={1}
+      zDepth={0}
       id='details_content'
       className='papers__example md-grid'
     >

@@ -34,8 +34,6 @@ function* GetItemDetails({ payload }) {
     { message: 'Record does not exist..' }
   )
 
-  console.log('result: ', result);
-
   if (result.type === GET_ITEM_DETAILS) {
     yield all([
       put(result),

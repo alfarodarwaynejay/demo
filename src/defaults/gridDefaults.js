@@ -1,8 +1,8 @@
 export default {
   search: '',
   filter: {
+    status: [],
     order: 'asc',
-    status: 'none',
     column: 'firstName'
   }
 }

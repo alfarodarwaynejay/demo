@@ -18,9 +18,9 @@ import {
 } from '../defaults'
 
 const {
-  orderControls,
-  statusControls,
-  columnControls
+  orderControls = [],
+  statusControls = [],
+  columnControls = []
 } = selectionDefault
 
 class Customers extends PureComponent {
@@ -63,12 +63,17 @@ class Customers extends PureComponent {
     }
   }
 
-  handleSelectionChange = (value, id) => {
-    // e.preventDefault()
-    // e.stopPropagation()
-
+  handleSelectionChange = (value, id, checked) => {
     const { dispatch } = this.props
     const { filter, ...restState } = this.state
+    if (id === 'status') {
+      if (checked) {
+        value = [...filter.status, value]
+      } else {
+        value = filter.status.filter(item => item !== value)
+      }
+    }
+
     const state = {
       ...restState,
       filter: {

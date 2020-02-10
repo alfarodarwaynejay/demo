@@ -4,8 +4,8 @@ import filterFunc from './filterFunc'
 
 export default function (list, search, status, order, column) {
   // filter by status
-  if (status !== 'none') {
-    list = list.filter(customer => customer.status === status)
+  if (status.length) {
+    list = list.filter(customer => status.includes(customer.status))
   }
 
   // filter by search field

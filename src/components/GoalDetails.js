@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Divider,
-  FontIcon,
-  TableRow,
-  DataTable,
-  TableBody,
-  TableHeader,
-  TableColumn,
-} from 'react-md'
+import { Divider } from 'react-md'
 import GoalHeader from './GoalHeader'
 import PlanList from './PlanList'
 import Modal from './Modal'
@@ -17,7 +9,7 @@ const GoalDetails = ({ goal_data }) => {
 
   const onRowClick = (data) => {
     setPlans(data)
-    setVisible('Existing Plans:')
+    setVisible('Plans')
   }
 
   const onHide = () => {

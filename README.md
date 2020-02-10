@@ -1,6 +1,6 @@
 # CUSTOMER PORTAL -- DEMO APP
 
-> This is a React app is created from scratch.
+> This React app is created from scratch.
 > 
 > Viewing library used in this app is `react-md`, which also provides most of this apps styling.
 >

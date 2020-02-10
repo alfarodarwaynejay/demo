@@ -1,7 +1,7 @@
 import React from 'react'
 import { DialogContainer } from 'react-md'
 
-const Modal = ({ message, width, onHide, children }) => {
+const Modal = ({ message, width, onHide, titleStyle, titleClassName, children }) => {
   const action = [{
     onClick: onHide,
     primary: true,
@@ -17,6 +17,8 @@ const Modal = ({ message, width, onHide, children }) => {
       actions={action}
       title={message}
       visible={!!message}
+      titleStyle={titleStyle}
+      titleClassName={titleClassName}
     >
       {children}
     </DialogContainer>

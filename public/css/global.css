@@ -180,6 +180,13 @@ padding-top: 1rem;
   margin-top: 2rem;
   margin-bottom: 0;
 }
+
+.plan_header {
+  margin-top: 0;
+  padding: 24px 24px 0 24px;
+  font-size: xx-large;
+}
+
 .financial_goals .md-table-row td:last-child .md-grid {
   display: flex;
   flex-wrap: nowrap;

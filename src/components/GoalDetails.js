@@ -32,6 +32,7 @@ const GoalDetails = ({ goal_data }) => {
           width={1250}
           onHide={onHide}
           message={visible}
+          titleClassName='demo__header plan_header'
         >
           <PlanList plans={plans} />
         </Modal>

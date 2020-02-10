@@ -8,7 +8,11 @@ const statusControls = [
     value: 'ACTIVE'
   },
   {
-    label: 'Regisering',
+    label: 'InActive',
+    value: 'INACTIVE'
+  },
+  {
+    label: 'Registering',
     value: 'REGISTERING',
   }
 ]

@@ -1,5 +1,5 @@
 export default [
-  'First tName',
+  'First Name',
   'Last Name',
   'Email',
   'Status',

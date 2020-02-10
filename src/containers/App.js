@@ -62,7 +62,6 @@ class App extends PureComponent {
   render() {
     const { toolbarTitle } = this.state
     const { location } = this.props
-    // console.log('routeItems: ', routeItems)
 
     return (
       <NavigationDrawer

@@ -133,8 +133,8 @@ class Customers extends PureComponent {
               onRowClick={this.handleRowClick}
             />
             <Modal
-              errors={store.errors}
               onHide={() => this.handleOnHide('modal')}
+              message={store.errors && store.errors.message}
             />
           </Paper>
         </div>

@@ -14,9 +14,9 @@ import {
 } from '../redux/actions'
 
 const {
-  emailStatus,
-  phoneDetailsKeys,
-  personalDetailsKeys
+  emailStatus = [],
+  phoneDetailsKeys = [],
+  personalDetailsKeys = []
 } = detailsKeys || {}
 
 class CustomerDetails extends PureComponent {

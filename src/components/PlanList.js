@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  Paper,
   TableRow,
   DataTable,
   TableBody,
@@ -49,12 +50,19 @@ const PlanList = ({ plans }) => {
     })
   }
   return (
-    <DataTable plain responsive className='md-cell md-cell--12'>
-    {tableHeader()}
-    <TableBody>
-      {tableRow()}
-    </TableBody>
-  </DataTable>
+    <Paper
+      key='paper'
+      zDepth={1}
+      id='details_content'
+      className='papers__example md-grid'
+    >
+      <DataTable plain responsive className='md-cell md-cell--12'>
+        {tableHeader()}
+        <TableBody>
+          {tableRow()}
+        </TableBody>
+      </DataTable>
+    </Paper>
   )
 }
 

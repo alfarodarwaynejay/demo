@@ -1,28 +1,52 @@
-import React from 'react'
-import { Divider } from 'react-md'
-import PlanList from './PlanList'
+import React, { useState } from 'react'
+import {
+  Divider,
+  FontIcon,
+  TableRow,
+  DataTable,
+  TableBody,
+  TableHeader,
+  TableColumn,
+} from 'react-md'
 import GoalHeader from './GoalHeader'
-const GoalDetails = ({ goal_data }) => (
-  <>
-    {
-      goal_data.map(goal => {
-        const plans = goal.plans || []
-        return (
-          <div className='md-grid  financial_goals' key={goal.goalId}>
-            <h3 className='md-cell--12 contact_span details_divider'>
-              Goal Info:
-            </h3>
-            <GoalHeader goal={goal || {}} className='md-cell--12' />
-            <h3 className='md-cell--12 contact_span details_divider'>
-              Existing Plans:
-            </h3>
-            <PlanList plans={plans} />
-          </div>
-        )
-      })
-    }
-    <Divider className='details_divider' />
-  </>
-)
+import PlanList from './PlanList'
+import Modal from './Modal'
+const GoalDetails = ({ goal_data }) => {
+  const [plans, setPlans] = useState([])
+  const [visible, setVisible] = useState('')
+
+  const onRowClick = (data) => {
+    setPlans(data)
+    setVisible('Existing Plans:')
+  }
+
+  const onHide = () => {
+    setPlans([])
+    setVisible('')
+  }
+
+
+  return (
+    <>
+      <div className='md-grid  financial_goals' >
+        <h3 className='md-cell--12 contact_span details_divider'>
+          Goal Info:
+        </h3>
+        <GoalHeader
+          goal_data={goal_data}
+          onRowClick={onRowClick}
+        />
+        <Modal
+          width={1250}
+          onHide={onHide}
+          message={visible}
+        >
+          <PlanList plans={plans} />
+        </Modal>
+      </div>
+      <Divider className='details_divider' />
+    </>
+  )
+}
 
 export default GoalDetails

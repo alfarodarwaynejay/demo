@@ -1,21 +1,25 @@
 import React from 'react'
 import { DialogContainer } from 'react-md'
 
-const Modal = ({ errors, onHide }) => {
+const Modal = ({ message, width, onHide, children }) => {
   const action = [{
     onClick: onHide,
     primary: true,
     children: 'Close',
   }]
-  return errors && (
+  return !!message && (
     <DialogContainer
       modal
       id='modal'
+      width={width}
+      autosizeContent
       onHide={onHide}
       actions={action}
-      visible={!!errors}
-      title={errors.message}
-    />
+      title={message}
+      visible={!!message}
+    >
+      {children}
+    </DialogContainer>
   )
 }
 

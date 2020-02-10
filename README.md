@@ -27,5 +27,13 @@
 3. run the app:
 > `npm run start`
 
-## BUILD DIST FOLDER
+## BUILD DIST FOLDER:
 > run `npm run build`
+
+## BRANCHES:
+> This repository has only two branches.
+
+> 1.` master` -- contains the first iteration of this app, with redundant grid display on multiple financial goals
+>
+> 2 `tabular_goal_grid` -- updated UI for multiple financial goals, plus a modal on row click of every goal.
+  

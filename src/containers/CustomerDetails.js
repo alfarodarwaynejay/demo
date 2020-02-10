@@ -14,9 +14,9 @@ import {
 } from '../redux/actions'
 
 const {
-  emailStatus,
-  phoneDetailsKeys,
-  personalDetailsKeys
+  emailStatus = [],
+  phoneDetailsKeys = [],
+  personalDetailsKeys = []
 } = detailsKeys || {}
 
 class CustomerDetails extends PureComponent {
@@ -46,7 +46,6 @@ class CustomerDetails extends PureComponent {
 
   render() {
     const { store: { details } } = this.props
-    console.log('this.props: ', this.props)
 
     const {
       goal_data = [],

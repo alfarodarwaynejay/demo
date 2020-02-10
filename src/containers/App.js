@@ -16,10 +16,17 @@ import {
   ClearDetails
 } from '../redux/actions'
 
+const routeItems = [
+  Customers,
+  About,
+  CustomeDetails,
+  Customers
+].map((component, index) => ({ ...navItems[index], component }))
+
 class App extends PureComponent {
   static propTypes = {
     location: PropTypes.object.isRequired,
-  };
+  }
 
   constructor(props) {
     super(props)
@@ -54,7 +61,8 @@ class App extends PureComponent {
 
   render() {
     const { toolbarTitle } = this.state
-    const { location, store } = this.props
+    const { location } = this.props
+    // console.log('routeItems: ', routeItems)
 
     return (
       <NavigationDrawer
@@ -65,10 +73,13 @@ class App extends PureComponent {
         mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY_MINI}
         tabletDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
         desktopDrawerType={NavigationDrawer.DrawerTypes.PERSISTENT_MINI}
-        navItems={navItems.map(props => (
-          <NavigationLink {...props} key={props.to} root='/customers' />
-        )
-        )}
+        navItems={navItems.map(props => props.navigation && (
+          <NavigationLink
+            {...props}
+            key={props.to}
+            root='/customers'
+          />
+        )).filter(Boolean)}
       >
         <Switch key={location.pathname}>
           <Route path={navItems[0].to} exact component={Customers} />
